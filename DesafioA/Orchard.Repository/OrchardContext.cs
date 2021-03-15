@@ -26,7 +26,7 @@ namespace Orchard.Repository
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseOracle(@"Data Source=127.0.0.1:49161/xe; User Id=system;Password=oracle;");
+            optionsBuilder.UseOracle(@"Data Source=127.0.0.1:49161/xe; User Id=system;Password=oracle;", options => options.UseOracleSQLCompatibility("11"));
         }
     }
 }

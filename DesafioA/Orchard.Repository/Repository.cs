@@ -21,7 +21,7 @@ namespace Orchard.Repository
         {
             try 
             { 
-                return await DbSet.FindAsync(id);
+                return await DbSet.FirstOrDefaultAsync(i => i.Id == id);
             }
             catch(Exception e)
             {
@@ -68,8 +68,8 @@ namespace Orchard.Repository
         }
         public virtual async Task Delete(int id)
         {
-            /*DbSet.Remove(new TEntity { Id = id });
-            await SaveChanges();*/
+            DbSet.Remove(new TEntity { Id = id });
+            await SaveChanges();
         }
 
         public async Task<int> SaveChanges()
