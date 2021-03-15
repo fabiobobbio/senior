@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 ## INTRODUCTION
 
 This document aims to define and specify the operational requirements of the Developer test REST API that will be developed for the Senior company.
