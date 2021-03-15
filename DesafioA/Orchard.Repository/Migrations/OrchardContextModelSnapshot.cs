@@ -17,25 +17,35 @@ namespace Orchard.Repository.Migrations
             modelBuilder
                 .HasAnnotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn)
                 .HasAnnotation("ProductVersion", "3.1.6")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("Relational:Sequence:.HARVEST_SEQ", "'HARVEST_SEQ', '', '1', '1', '', '', 'Int32', 'False'")
+                .HasAnnotation("Relational:Sequence:.SPECIE_SEQ", "'SPECIE_SEQ', '', '1', '1', '', '', 'Int32', 'False'")
+                .HasAnnotation("Relational:Sequence:.TREE_SEQ", "'TREE_SEQ', '', '1', '1', '', '', 'Int32', 'False'")
+                .HasAnnotation("Relational:Sequence:.TREEGROUP_SEQ", "'TREEGROUP_SEQ', '', '1', '1', '', '', 'Int32', 'False'");
 
             modelBuilder.Entity("Orchard.Domain.Harvest", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
                         .HasColumnType("NUMBER(10)")
-                        .HasAnnotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("Oracle:HiLoSequenceName", "HARVEST_SEQ")
+                        .HasAnnotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<DateTime>("Date")
+                        .HasColumnName("Date")
                         .HasColumnType("TIMESTAMP(7)");
 
                     b.Property<decimal>("GrossWeight")
+                        .HasColumnName("GrossWeight")
                         .HasColumnType("DECIMAL(18, 2)");
 
                     b.Property<string>("Information")
+                        .HasColumnName("Information")
                         .HasColumnType("NVARCHAR2(2000)");
 
                     b.Property<int>("TreeId")
+                        .HasColumnName("TreeId")
                         .HasColumnType("NUMBER(10)");
 
                     b.HasKey("Id");
@@ -49,10 +59,13 @@ namespace Orchard.Repository.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
                         .HasColumnType("NUMBER(10)")
-                        .HasAnnotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("Oracle:HiLoSequenceName", "SPECIE_SEQ")
+                        .HasAnnotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("Description")
+                        .HasColumnName("Description")
                         .HasColumnType("NVARCHAR2(2000)");
 
                     b.HasKey("Id");
@@ -64,16 +77,21 @@ namespace Orchard.Repository.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
                         .HasColumnType("NUMBER(10)")
-                        .HasAnnotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("Oracle:HiLoSequenceName", "TREE_SEQ")
+                        .HasAnnotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<int>("Age")
+                        .HasColumnName("Age")
                         .HasColumnType("NUMBER(10)");
 
                     b.Property<string>("Description")
+                        .HasColumnName("Description")
                         .HasColumnType("NVARCHAR2(2000)");
 
                     b.Property<int>("SpecieId")
+                        .HasColumnName("SpecieId")
                         .HasColumnType("NUMBER(10)");
 
                     b.Property<int?>("TreeGroupId")
@@ -92,16 +110,21 @@ namespace Orchard.Repository.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
                         .HasColumnType("NUMBER(10)")
-                        .HasAnnotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("Oracle:HiLoSequenceName", "TREEGROUP_SEQ")
+                        .HasAnnotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("Description")
+                        .HasColumnName("Description")
                         .HasColumnType("NVARCHAR2(2000)");
 
                     b.Property<string>("Name")
+                        .HasColumnName("Name")
                         .HasColumnType("NVARCHAR2(2000)");
 
                     b.Property<int>("TreeId")
+                        .HasColumnName("TreeId")
                         .HasColumnType("NUMBER(10)");
 
                     b.HasKey("Id");

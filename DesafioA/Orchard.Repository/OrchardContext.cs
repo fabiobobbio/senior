@@ -15,6 +15,13 @@ namespace Orchard.Repository
         {
             Assembly assemblyWithConfiguration = GetType().Assembly;
             modelBuilder.ApplyConfigurationsFromAssembly(assemblyWithConfiguration);
+
+            modelBuilder.HasSequence<int>("HARVEST_SEQ").StartsAt(1).IncrementsBy(1);
+            modelBuilder.HasSequence<int>("SPECIE_SEQ").StartsAt(1).IncrementsBy(1);
+            modelBuilder.HasSequence<int>("TREEGROUP_SEQ").StartsAt(1).IncrementsBy(1);
+            modelBuilder.HasSequence<int>("TREE_SEQ").StartsAt(1).IncrementsBy(1);
+
+            base.OnModelCreating(modelBuilder);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

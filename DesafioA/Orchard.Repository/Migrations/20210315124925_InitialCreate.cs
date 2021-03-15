@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Oracle.EntityFrameworkCore.Metadata;
 
 namespace Orchard.Repository.Migrations
 {
@@ -8,12 +7,23 @@ namespace Orchard.Repository.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateSequence<int>(
+                name: "HARVEST_SEQ");
+
+            migrationBuilder.CreateSequence<int>(
+                name: "SPECIE_SEQ");
+
+            migrationBuilder.CreateSequence<int>(
+                name: "TREE_SEQ");
+
+            migrationBuilder.CreateSequence<int>(
+                name: "TREEGROUP_SEQ");
+
             migrationBuilder.CreateTable(
                 name: "Species",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -25,8 +35,7 @@ namespace Orchard.Repository.Migrations
                 name: "TreeGroups",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     TreeId = table.Column<int>(nullable: false)
@@ -40,8 +49,7 @@ namespace Orchard.Repository.Migrations
                 name: "Trees",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     Age = table.Column<int>(nullable: false),
                     SpecieId = table.Column<int>(nullable: false),
@@ -57,7 +65,7 @@ namespace Orchard.Repository.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Trees_TGs_TGId",
+                        name: "FK_TreeGroups_TreeGroupId",
                         column: x => x.TreeGroupId,
                         principalTable: "TreeGroups",
                         principalColumn: "Id",
@@ -68,8 +76,7 @@ namespace Orchard.Repository.Migrations
                 name: "Harvests",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false),
                     Information = table.Column<string>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
                     GrossWeight = table.Column<decimal>(nullable: false),
@@ -115,6 +122,18 @@ namespace Orchard.Repository.Migrations
 
             migrationBuilder.DropTable(
                 name: "TreeGroups");
+
+            migrationBuilder.DropSequence(
+                name: "HARVEST_SEQ");
+
+            migrationBuilder.DropSequence(
+                name: "SPECIE_SEQ");
+
+            migrationBuilder.DropSequence(
+                name: "TREE_SEQ");
+
+            migrationBuilder.DropSequence(
+                name: "TREEGROUP_SEQ");
         }
     }
 }

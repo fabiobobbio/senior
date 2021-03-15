@@ -28,7 +28,71 @@ Structuring of folders, files and routes.
 - [Oracle](https://www.oracle.com/index.html)
 
 
-## INSTALAÇÃO
+## INSTALLATION
 
-#### Pré-requisitos
+#### Prerequisites
+
+- [Docker](https://www.docker.com/)
+
+With Docker installed, you will need to install Oracle on it. Run the following commands:
+$ docker pull oracleinanutshell / oracle-xe-11g
+$ docker run -d -p 49161: 1521 -e ORACLE_ALLOW_REMOTE = true oracleinanutshell / oracle-xe-11g
+$ docker ps
+
+Save the ID of the created container.
+It is interesting to use a visual tool for manipulating the database. Eg: SQL Developer, DBeaver, etc.
+Create a Database user. Create a new SYSTEM user connection:
+Name      SYSTEM-LOCAL
+Username  system
+Password  oracle
+Hostname  localhost
+Port      49161
+SID       xe
+
+Soon after, create a database and permissions user according to the command below:
+CREATE USER your_user_name IDENTIFIED BY "yourpassword" DEFAULT TABLESPACE TBS_YOUR_TABLE_SPACE QUOTA UNLIMITED ON TBS_YOUR_TABLE_SPACE;
+GRANT connect, create session, imp_full_database TO your_user_name;
+
+Creating a new connection with the application user:
+Name      YOUR_USER_NAME-LOCAL
+Username  your_user_name
+Password  your_password
+Hostname  localhost
+Port      49161
+SID       xe
+
+Run the container with the command below where CONTAINER_ID is the container ID:
+$ docker start CONTAINER_ID
+
+To create the tables, sequences, access the repository project folder and execute the command:
+$ dotnet ef --startup-project ../Orchard.API database update
+
+Compile the project and all its dependencies with the command below at the root of the challenge folder:
+$ dotnet build
+
+Finally run the API with the command:
+$ dotnet run
+
+Server initialization on port 5000 for http and 5001 for https
+
+Server initialization on port 5000 for http and 5001 for https
+
+The localhost API is served by port 5000 for http and 5001 for https:
+(http://localhost:5000)
+
+### ENDPOINTS
+
+#### METHODS
+
+###### POST
+- /api/Species => Register a species of tree,
+- /api/TreeGroups => Register a group of trees,
+- /api/Harvest => Register a new harvest,
+- /api/Trees => Register a tree.
+
+###### GET
+- /api/Species => List all registered species,
+- /api/TreeGroups => List all registered tree groups,
+- /api/Harvest => List all registered harvests,
+- /api/Trees => List all registered trees.
 
