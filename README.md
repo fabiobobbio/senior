@@ -96,3 +96,21 @@ The localhost API is served by port 5000 for http and 5001 for https:
 - /api/Harvest => List all registered harvests,
 - /api/Trees => List all registered trees.
 
+- /api/Species/1 => List the registered species with id sent as parameter
+- /api/TreeGroups/1 => List the registered treeGroups with id sent as parameter
+- /api/Harvest/1 => List the registered harvest with id sent as parameter
+- /api/Trees/1 => List the registered trees with id sent as parameter
+
+###### PUT
+
+- /api/Species/1 => Updates the registered species with id sent as parameter
+- /api/TreeGroups/1 => Updates the registered treeGroups with id sent as parameter
+- /api/Harvest/1 => Updates the registered harvest with id sent as parameter
+- /api/Trees/1 => Updates the registered trees with id sent as parameter
+
+###### DELETE
+
+- /api/Species/1 => Delete the registered species with id sent as parameter
+- /api/TreeGroups/1 => Delete the registered treeGroups with id sent as parameter
+- /api/Harvest/1 => Delete the registered harvest with id sent as parameter
+- /api/Trees/1 => Delete the registered trees with id sent as parameter
