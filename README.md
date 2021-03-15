@@ -1,3 +1,5 @@
+# DESAFIO A
+
 ## INTRODUCTION
 
 This document aims to define and specify the operational requirements of the Developer test REST API that will be developed for the Senior company.
@@ -114,3 +116,7 @@ The localhost API is served by port 5000 for http and 5001 for https:
 - /api/TreeGroups/1 => Delete the registered treeGroups with id sent as parameter
 - /api/Harvest/1 => Delete the registered harvest with id sent as parameter
 - /api/Trees/1 => Delete the registered trees with id sent as parameter
+
+##### Testes com 
+
+- Some tests will not be performed if the database is turned off, taking into account the test of routes with access to it.
