@@ -1,6 +1,6 @@
 namespace Orchard.Domain
 {
-    public abstract class Entity<TKeyType, TEntity>
+  public abstract class Entity<TKeyType, TEntity>
     {
         protected Entity(TKeyType ID = default)
         {

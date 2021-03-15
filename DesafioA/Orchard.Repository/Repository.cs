@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Orchard.Domain;
@@ -68,29 +66,15 @@ namespace Orchard.Repository
                 throw;
             }
         }
-
         public virtual async Task Delete(int id)
         {
-            try { 
-                DbSet.Remove(new TEntity { Id = id });
-                await SaveChanges();
-            }
-            catch(Exception e)
-            {
-                throw;
-            }
+            /*DbSet.Remove(new TEntity { Id = id });
+            await SaveChanges();*/
         }
 
         public async Task<int> SaveChanges()
         {
-            try
-            {
-                return await Db.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            return await Db.SaveChangesAsync();
         }
 
         public void Dispose()

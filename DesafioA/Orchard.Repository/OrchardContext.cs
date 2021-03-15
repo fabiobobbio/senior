@@ -11,7 +11,6 @@ namespace Orchard.Repository
         public DbSet<Specie> Species { get; set; }
         public DbSet<Harvest> Harvests { get; set; }
         public DbSet<TreeGroup> TreeGroups { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             Assembly assemblyWithConfiguration = GetType().Assembly;

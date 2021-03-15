@@ -1,0 +1,12 @@
+/home/fabio/Downloads/Senior/senior/DesafioA/Orchard.Repository/bin/Debug/netstandard2.0/Orchard.Repository.deps.json
+/home/fabio/Downloads/Senior/senior/DesafioA/Orchard.Repository/bin/Debug/netstandard2.0/Orchard.Repository.dll
+/home/fabio/Downloads/Senior/senior/DesafioA/Orchard.Repository/bin/Debug/netstandard2.0/Orchard.Repository.pdb
+/home/fabio/Downloads/Senior/senior/DesafioA/Orchard.Repository/bin/Debug/netstandard2.0/Orchard.Domain.dll
+/home/fabio/Downloads/Senior/senior/DesafioA/Orchard.Repository/bin/Debug/netstandard2.0/Orchard.Domain.pdb
+/home/fabio/Downloads/Senior/senior/DesafioA/Orchard.Repository/obj/Debug/netstandard2.0/Orchard.Repository.csprojAssemblyReference.cache
+/home/fabio/Downloads/Senior/senior/DesafioA/Orchard.Repository/obj/Debug/netstandard2.0/Orchard.Repository.AssemblyInfoInputs.cache
+/home/fabio/Downloads/Senior/senior/DesafioA/Orchard.Repository/obj/Debug/netstandard2.0/Orchard.Repository.AssemblyInfo.cs
+/home/fabio/Downloads/Senior/senior/DesafioA/Orchard.Repository/obj/Debug/netstandard2.0/Orchard.Repository.csproj.CoreCompileInputs.cache
+/home/fabio/Downloads/Senior/senior/DesafioA/Orchard.Repository/obj/Debug/netstandard2.0/Orchard.Repository.csproj.CopyComplete
+/home/fabio/Downloads/Senior/senior/DesafioA/Orchard.Repository/obj/Debug/netstandard2.0/Orchard.Repository.dll
+/home/fabio/Downloads/Senior/senior/DesafioA/Orchard.Repository/obj/Debug/netstandard2.0/Orchard.Repository.pdb

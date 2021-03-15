@@ -4,8 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Orchard.API.Config;
 using Orchard.Repository;
-using AutoMapper;
 
 namespace Orchard.API
 {

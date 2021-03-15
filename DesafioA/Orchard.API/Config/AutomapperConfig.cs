@@ -1,13 +1,17 @@
+using AutoMapper;
+using Orchard.API.ViewModels;
+using Orchard.Domain;
+
 namespace Orchard.API.Config
 {
-    public class AutomapperConfig
+    public class AutomapperConfig : Profile
     {
         public AutomapperConfig()
         {
-            /*CreateMap<MotivoEmergenciaViewModel, Trit_Motivo_Emergencia>().ReverseMap();
-            CreateMap<MotivoTransporteViewModel, Trit_Motivo_Transporte>().ReverseMap();
-            CreateMap<SolicitacaoTransporteViewModel, Trit_Solicitacao_Transporte>().ReverseMap();
-            CreateMap<ServicoTransporteViewModel, Trit_Servico_Transporte>().ReverseMap();*/
+            CreateMap<Harvest, HarvestViewModel>().ReverseMap();
+            CreateMap<Tree, TreeViewModel>().ReverseMap();
+            CreateMap<TreeGroup, TreeGroupsViewModel>().ReverseMap();
+            CreateMap<Specie, SpeciesViewModel>().ReverseMap();
         }
     }
 }
