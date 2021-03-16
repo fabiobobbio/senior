@@ -6,7 +6,7 @@ Este documento tem como objetivo definir e especificar os requisitos operacionai
 
 Formalmente, podemos definir que o documento contém: “Os serviços e funcionalidades que a API disponibiliza”, informações sobre a arquitetura da aplicação, bem como restrições.
 
-#### OVERVIEW OF THE PROPOSED SYSTEM
+#### VISÃO GERAL DO SISTEMA PROPOSTO
 
 O objetivo é desenvolver algumas APIs get e post para retornar e registrar dados relacionados ao manejo de um pomar de um produtor de frutas usando a tecnologias C#.
 
@@ -116,6 +116,6 @@ A API localhost é servida pela porta 5000 para http e 5001 para https:
 - /api/Harvest/1 => Exclui a colheita registrada com id enviado como parâmetro
 - /api/Trees/1 => Exclui a árvore cadastrada com id enviado como parâmetro
 
-##### Unit tests with xUnit.net 
+##### Testes de unidade com xUnit.net 
 
 - Alguns testes não são realizados se o banco de dados estiver desligado, levando em consideração o teste de rotas com acesso a ele.
