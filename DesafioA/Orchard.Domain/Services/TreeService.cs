@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Orchard.Domain.Interfaces;
 
@@ -14,7 +15,10 @@ namespace Orchard.Domain.Services
 
     public async Task Add(Tree tree)
     {
-      await _treeRepository.Create(tree);
+      try{await _treeRepository.Create(tree);}
+      catch(Exception e){
+        throw;
+      }
     }
 
     public async Task Delete(int id)

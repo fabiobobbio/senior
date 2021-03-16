@@ -1,49 +1,50 @@
 # DESAFIO A
 
-## INTRODUCTION
+## INTRODUÇÃO
 
-This document aims to define and specify the operational requirements of the Developer test REST API that will be developed for the Senior company.
+Este documento tem como objetivo definir e especificar os requisitos operacionais da API REST de teste de Desenvolvedor que serão desenvolvidos para a empresa Sênior.
 
-Formally, we can define that the document contains: "The services and features that the API provides", information about the architecture of the application, as well as restrictions.
+Formalmente, podemos definir que o documento contém: “Os serviços e funcionalidades que a API disponibiliza”, informações sobre a arquitetura da aplicação, bem como restrições.
 
 #### OVERVIEW OF THE PROPOSED SYSTEM
 
+O objetivo é desenvolver algumas APIs get e post para retornar e registrar dados relacionados ao manejo de um pomar de um produtor de frutas usando a tecnologias C#.
 
-The goal is to develop some API’s get and post to return and record data related to a management of an orchard of a fruit producer using the technologies: C #.
-
-## ARCHITECTURE
-
-
-#### Description
+## ARQUITETURA
 
 
-The Service was developed using Entity Framework with Oracle database.
+#### Descrição
 
 
-Structuring of folders, files and routes.
+O Serviço foi desenvolvido utilizando NetCore, ORM Entity Framework com banco de dados Oracle. Buscou-se seguir os princípios do SOLID como melhores práticas de desenvolvimento.
 
 
-#### Technologies Used
+Estruturação de pastas, arquivos e rotas.
+
+
+#### Tecnologias utilizadas
 
 - [Docker Containers](https://www.docker.com/)
 - [NetCore](https://dotnet.microsoft.com/download)
 - [Oracle](https://www.oracle.com/index.html)
 
 
-## INSTALLATION
+## INSTALAÇÃO
 
-#### Prerequisites
+#### Pré-requisitos
 
 - [Docker](https://www.docker.com/)
 
-With Docker installed, you will need to install Oracle on it. Run the following commands:
+Com o Docker instalado, você precisará instalar o Oracle nele. Execute os seguintes comandos:
+
 $ docker pull oracleinanutshell / oracle-xe-11g
 $ docker run -d -p 49161: 1521 -e ORACLE_ALLOW_REMOTE = true oracleinanutshell / oracle-xe-11g
 $ docker ps
 
-Save the ID of the created container.
-It is interesting to use a visual tool for manipulating the database. Eg: SQL Developer, DBeaver, etc.
-Create a Database user. Create a new SYSTEM user connection:
+Salve o ID do container criado.
+É interessante usar uma ferramenta visual para manipular o banco de dados. Ex: SQL Developer, DBeaver, etc.
+
+Crie um usuário do banco de dados. Crie uma nova conexão de usuário SYSTEM:
 Name      SYSTEM-LOCAL
 Username  system
 Password  oracle
@@ -51,11 +52,11 @@ Hostname  localhost
 Port      49161
 SID       xe
 
-Soon after, create a database and permissions user according to the command below:
+Em seguida, crie um banco de dados e permissões de usuário de acordo com o comando abaixo:
 CREATE USER your_user_name IDENTIFIED BY "yourpassword" DEFAULT TABLESPACE TBS_YOUR_TABLE_SPACE QUOTA UNLIMITED ON TBS_YOUR_TABLE_SPACE;
 GRANT connect, create session, imp_full_database TO your_user_name;
 
-Creating a new connection with the application user:
+Criar uma nova conexão com o usuário do aplicativo:
 Name      YOUR_USER_NAME-LOCAL
 Username  your_user_name
 Password  your_password
@@ -63,60 +64,58 @@ Hostname  localhost
 Port      49161
 SID       xe
 
-Run the container with the command below where CONTAINER_ID is the container ID:
+Execute o contêiner com o comando abaixo, em que CONTAINER_ID é o ID do contêiner:
 $ docker start CONTAINER_ID
 
-To create the tables, sequences, access the repository project folder and execute the command:
+Para criar as tabelas, relacionamentos e sequences, acesse a pasta do projeto do repositório e execute o comando:
 $ dotnet ef --startup-project ../Orchard.API database update
 
-Compile the project and all its dependencies with the command below at the root of the challenge folder:
+Compile o projeto e todas as suas dependências com o comando abaixo na raiz da pasta do desafio:
 $ dotnet build
 
-Finally run the API with the command:
+Finalmente execute a API com o comando abaixo na raiz do projeto API:
 $ dotnet run
 
-Server initialization on port 5000 for http and 5001 for https
+Inicialização do servidor na porta 5000 para http e 5001 para https
 
-Server initialization on port 5000 for http and 5001 for https
-
-The localhost API is served by port 5000 for http and 5001 for https:
-(http://localhost:5000)
+A API localhost é servida pela porta 5000 para http e 5001 para https:
+(http://localhost:5000 e https://localhost:5001)
 
 ### ENDPOINTS
 
-#### METHODS
+#### MÉTODOS
 
 ###### POST
-- /api/Species => Register a species of tree,
-- /api/TreeGroups => Register a group of trees,
-- /api/Harvest => Register a new harvest,
-- /api/Trees => Register a tree.
+- /api/Species => Registre uma espécie de árvore,
+- /api/TreeGroups => Registre um grupo de árvores,
+- /api/Harvest => Registre uma nova colheita,
+- /api/Trees => Registre uma árvore.
 
 ###### GET
-- /api/Species => List all registered species,
-- /api/TreeGroups => List all registered tree groups,
-- /api/Harvest => List all registered harvests,
-- /api/Trees => List all registered trees.
+- /api/Species => Liste todas as espécies registradas,
+- /api/TreeGroups => Lista todos os grupos de árvores registrados,
+- /api/Harvest => Liste todas as colheitas registradas,
+- /api/Trees => Listar todas as árvores registradas.
 
-- /api/Species/1 => List the registered species with id sent as parameter
-- /api/TreeGroups/1 => List the registered treeGroups with id sent as parameter
-- /api/Harvest/1 => List the registered harvest with id sent as parameter
-- /api/Trees/1 => List the registered trees with id sent as parameter
+- /api/Species/1 => Liste a espécie registrada com id enviado como parâmetro
+- /api/TreeGroups/1 => Lista os treeGroups registrados com id enviado como parâmetro
+- /api/Harvest/1 => Lista a colheita registrada com id enviado como parâmetro
+- /api/Trees/1 => Liste a árvore cadastrada com id enviado como parâmetro
 
 ###### PUT
 
-- /api/Species/1 => Updates the registered species with id sent as parameter
-- /api/TreeGroups/1 => Updates the registered treeGroups with id sent as parameter
-- /api/Harvest/1 => Updates the registered harvest with id sent as parameter
-- /api/Trees/1 => Updates the registered trees with id sent as parameter
+- /api/Species/1 => Atualiza a espécie registrada com id enviado como parâmetro
+- /api/TreeGroups/1 => Atualiza os treeGroups registrados com id enviado como parâmetro
+- /api/Harvest/1 => Atualiza a colheita registrada com id enviado como parâmetro
+- /api/Trees/1 => Atualiza as árvores cadastradas com id enviado como parâmetro
 
 ###### DELETE
 
-- /api/Species/1 => Delete the registered species with id sent as parameter
-- /api/TreeGroups/1 => Delete the registered treeGroups with id sent as parameter
-- /api/Harvest/1 => Delete the registered harvest with id sent as parameter
-- /api/Trees/1 => Delete the registered trees with id sent as parameter
+- /api/Species/1 => Exclui a espécie registrada com id enviado como parâmetro
+- /api/TreeGroups/1 => Exclui o treeGroup registrados com id enviado como parâmetro
+- /api/Harvest/1 => Exclui a colheita registrada com id enviado como parâmetro
+- /api/Trees/1 => Exclui a árvore cadastrada com id enviado como parâmetro
 
-##### Testes com 
+##### Unit tests with xUnit.net 
 
-- Some tests will not be performed if the database is turned off, taking into account the test of routes with access to it.
+- Alguns testes não são realizados se o banco de dados estiver desligado, levando em consideração o teste de rotas com acesso a ele.
