@@ -2,7 +2,7 @@
 
 ## INTRODUÇÃO
 
-Este documento tem como objetivo definir e especificar os requisitos operacionais da API REST de teste de Desenvolvedor que serão desenvolvidos para a empresa Sênior.
+Este documento tem como objetivo definir e especificar os requisitos operacionais da API REST de teste de Desenvolvedor.
 
 Formalmente, podemos definir que o documento contém: “Os serviços e funcionalidades que a API disponibiliza”, informações sobre a arquitetura da aplicação, bem como restrições.
 
